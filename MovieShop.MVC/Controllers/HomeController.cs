@@ -14,7 +14,7 @@ namespace MovieShop.MVC.Controllers
 
         public IActionResult Index()
         {
-            var movies = _movieService.GetTopMovies(10);
+            var movies = _movieService.GetTopMovies(100);
             return View(movies);
         }
     }

@@ -15,3 +15,4 @@
 /Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.pdb
 /Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.genruntimeconfig.cache
 /Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/ref/Infrastructure.dll
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.sourcelink.json

@@ -226,3 +226,4 @@
 /Users/manoj/RiderProjects/MovieShop/MovieShop.MVC/obj/Debug/net10.0/MovieShop.MVC.pdb
 /Users/manoj/RiderProjects/MovieShop/MovieShop.MVC/obj/Debug/net10.0/MovieShop.MVC.genruntimeconfig.cache
 /Users/manoj/RiderProjects/MovieShop/MovieShop.MVC/obj/Debug/net10.0/ref/MovieShop.MVC.dll
+/Users/manoj/RiderProjects/MovieShop/MovieShop.MVC/obj/Debug/net10.0/MovieShop.MVC.sourcelink.json
