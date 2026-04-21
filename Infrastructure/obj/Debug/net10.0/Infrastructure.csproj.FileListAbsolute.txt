@@ -1,0 +1,17 @@
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/Infrastructure.deps.json
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/Infrastructure.runtimeconfig.json
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/Infrastructure.dll
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/Infrastructure.pdb
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/ApplicationCore.dll
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/bin/Debug/net10.0/ApplicationCore.pdb
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.csproj.AssemblyReference.cache
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.AssemblyInfoInputs.cache
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.AssemblyInfo.cs
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.csproj.CoreCompileInputs.cache
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastr.15EFFBFE.Up2Date
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.dll
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/refint/Infrastructure.dll
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.pdb
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/Infrastructure.genruntimeconfig.cache
+/Users/manoj/RiderProjects/MovieShop/Infrastructure/obj/Debug/net10.0/ref/Infrastructure.dll

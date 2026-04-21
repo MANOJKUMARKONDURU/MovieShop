@@ -1,0 +1,14 @@
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/bin/Debug/net10.0/ApplicationCore.deps.json
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/bin/Debug/net10.0/ApplicationCore.runtimeconfig.json
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/bin/Debug/net10.0/ApplicationCore.dll
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/bin/Debug/net10.0/ApplicationCore.pdb
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.csproj.AssemblyReference.cache
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.AssemblyInfoInputs.cache
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.AssemblyInfo.cs
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.csproj.CoreCompileInputs.cache
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.dll
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/refint/ApplicationCore.dll
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.pdb
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ApplicationCore.genruntimeconfig.cache
+/Users/manoj/RiderProjects/MovieShop/ApplicationCore/obj/Debug/net10.0/ref/ApplicationCore.dll
