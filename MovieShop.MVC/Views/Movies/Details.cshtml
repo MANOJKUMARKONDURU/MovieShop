@@ -13,7 +13,20 @@
         <!-- Column 2: Movie Details -->
         <div class="col-md-6">
             <h2>@Model.Title</h2>
-
+            @if (Model.Rating != null)
+            {
+                <span style="
+        background: linear-gradient(90deg, #28a745, #34d058);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 6px;">
+                    ⭐ @Model.Rating
+                </span>
+            }
             <div class="mb-2">
                 @foreach (var g in Model.Genres)
                 {

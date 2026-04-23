@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -12,10 +13,12 @@ namespace MovieShop.MVC.Controllers
             _movieService = movieService;
         }
 
-        public IActionResult Index()
+        // Home Page with Pagination
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var movies = _movieService.GetTopMovies(150);
-            return View(movies);
+            // 20 movies per page
+            var model = await _movieService.GetPagedMoviesAsync(page, 20);
+            return View(model);
         }
     }
 }

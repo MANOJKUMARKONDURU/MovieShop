@@ -42,6 +42,8 @@ namespace ApplicationCore.Entities
         public DateTime? ReleaseDate { get; set; }
 
         public int? RunTime { get; set; }
+        
+        public decimal? Rating { get; set; }
 
         // Navigation Properties
         public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();

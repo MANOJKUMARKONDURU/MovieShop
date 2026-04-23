@@ -1,11 +1,7 @@
-@model ApplicationCore.Models.MovieCardModel
+@model ApplicationCore.Models.MovieCardResponseModel
 
-<div class="card h-100 shadow-sm">
-    <img src="@Model.PosterUrl" class="card-img-top" alt="@Model.Title" />
-
-    <div class="card-body">
-        <h5 class="card-title">@Model.Title</h5>
-        <p class="card-text text-muted">$@Model.Price</p>
-        <a href="/Movies/Details/@Model.Id" class="btn btn-primary w-100">View Details</a>
+<a href="/Movies/Details/@Model.Id" style="text-decoration:none; color:inherit;">
+    <div class="card h-100 shadow-sm">
+        <img src="@Model.PosterUrl" class="card-img-top" alt="@Model.Title" />
     </div>
-</div>
+</a>

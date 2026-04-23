@@ -1,14 +1,72 @@
-﻿@model IEnumerable<ApplicationCore.Models.MovieCardModel>
+﻿@model ApplicationCore.Models.MoviePagedResultModel
 
 <div class="container mt-4">
     <h2 class="mb-4">Top Movies</h2>
 
     <div class="row">
-        @foreach (var movie in Model)
+        @foreach (var movie in Model.Movies)
         {
-            <div class="col-md-3 mb-4">
+            <div class="col-2 mb-4">
                 @await Html.PartialAsync("_MovieCard", movie)
             </div>
         }
+    </div>
+
+<!-- Pagination -->
+<div class="pagination justify-content-center mt-4">
+
+        @{
+            int total = Model.TotalPages;
+            int current = Model.PageNumber;
+
+            // Sliding window logic
+            int start = Math.Max(1, current - 2);
+            int end = Math.Min(total, current + 2);
+
+            // URL builder for Home page
+            string PageUrl(int page) => $"/Home/Index?page={page}";
+        }
+
+        <!-- First -->
+        <a class="btn btn-sm btn-outline-primary me-1" href="@PageUrl(1)">««</a>
+
+        <!-- Previous -->
+        @if (current > 1)
+        {
+            <a class="btn btn-sm btn-outline-primary me-1" href="@PageUrl(current - 1)">«</a>
+        }
+
+        <!-- Page 1 + ellipsis -->
+        @if (start > 1)
+        {
+            <a href="@PageUrl(1)" class="btn btn-sm btn-outline-primary me-1">1</a>
+            <span class="btn btn-sm btn-outline-secondary disabled me-1">...</span>
+        }
+
+        <!-- Middle pages -->
+        @for (int i = start; i <= end; i++)
+        {
+            <a href="@PageUrl(i)"
+               class="btn btn-sm @(i == current ? "btn-primary" : "btn-outline-primary") me-1">
+                @i
+            </a>
+        }
+
+        <!-- Last page + ellipsis -->
+        @if (end < total)
+        {
+            <span class="btn btn-sm btn-outline-secondary disabled me-1">...</span>
+            <a href="@PageUrl(total)" class="btn btn-sm btn-outline-primary me-1">@total</a>
+        }
+
+        <!-- Next -->
+        @if (current < total)
+        {
+            <a class="btn btn-sm btn-outline-primary me-1" href="@PageUrl(current + 1)">»</a>
+        }
+
+        <!-- Last -->
+        <a class="btn btn-sm btn-outline-primary" href="@PageUrl(total)">»»</a>
+
     </div>
 </div>
