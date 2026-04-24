@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IPurchaseRepository : IRepository<Purchase>
+    public interface IGenreRepository : IRepository<Genre>
     {
-        Task<IEnumerable<Purchase>> GetPurchasesByUserAsync(int userId);
+        Task<IEnumerable<Genre>> GetAllAsync();
     }
 }

@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Components
 {
@@ -12,9 +13,9 @@ namespace MovieShop.MVC.Components
             _genreService = genreService;
         }
 
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var genres = _genreService.GetAllGenres();
+            var genres = await _genreService.GetAllGenresAsync();
             return View(genres);
         }
     }

@@ -2,6 +2,7 @@ using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -14,9 +15,9 @@ namespace Infrastructure.Services
             _castRepository = castRepository;
         }
 
-        public CastDetailsModel GetCastDetails(int id)
+        public async Task<CastDetailsModel> GetCastDetailsAsync(int id)
         {
-            var cast = _castRepository.GetCastWithMovies(id);
+            var cast = await _castRepository.GetCastWithMoviesAsync(id);
             if (cast == null) return null;
 
             return new CastDetailsModel

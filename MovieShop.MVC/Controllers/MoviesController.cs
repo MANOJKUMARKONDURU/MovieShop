@@ -33,7 +33,10 @@ namespace MovieShop.MVC.Controllers
             // 20 movies per page
             var model = await _movieService.GetPagedMoviesByGenreAsync(id, page, 20);
 
-            var genre = _genreService.GetAllGenres().FirstOrDefault(g => g.Id == id);
+            // FIXED: async genre lookup
+            var genres = await _genreService.GetAllGenresAsync();
+            var genre = genres.FirstOrDefault(g => g.Id == id);
+
             ViewBag.GenreName = genre?.Name ?? "Movies";
             ViewBag.GenreId = id;
 

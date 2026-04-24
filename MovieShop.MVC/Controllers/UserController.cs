@@ -1,6 +1,7 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -15,9 +16,9 @@ namespace MovieShop.MVC.Controllers
             _purchaseRepository = purchaseRepository;
         }
 
-        public IActionResult Purchases(int userId)
+        public async Task<IActionResult> Purchases(int userId)
         {
-            var purchases = _purchaseRepository.GetPurchasesByUser(userId);
+            var purchases = await _purchaseRepository.GetPurchasesByUserAsync(userId);
             return View(purchases);
         }
     }

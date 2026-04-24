@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -12,9 +13,9 @@ namespace MovieShop.MVC.Controllers
             _castService = castService;
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var cast = _castService.GetCastDetails(id);
+            var cast = await _castService.GetCastDetailsAsync(id);
             if (cast == null)
             {
                 return NotFound();

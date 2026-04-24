@@ -2,7 +2,7 @@ using ApplicationCore.Contracts.Repository;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -15,34 +15,34 @@ namespace Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public virtual T GetById(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
-            return _dbContext.Set<T>().Find(id);
+            return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return _dbContext.Set<T>().ToList();
+            return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public T Add(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            _dbContext.Set<T>().Add(entity);
-            _dbContext.SaveChanges();
+            await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
             return entity;
         }
 
-        public T Update(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             _dbContext.Set<T>().Update(entity);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             return entity;
         }
 
-        public void Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

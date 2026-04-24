@@ -1,8 +1,10 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -12,11 +14,12 @@ namespace Infrastructure.Repository
         {
         }
 
-        public IEnumerable<Purchase> GetPurchasesByUser(int userId)
+        public async Task<IEnumerable<Purchase>> GetPurchasesByUserAsync(int userId)
         {
-            return _dbContext.Purchases
+            return await _dbContext.Purchases
                 .Where(p => p.UserId == userId)
-                .ToList();
+                .Include(p => p.Movie)
+                .ToListAsync();
         }
     }
 }

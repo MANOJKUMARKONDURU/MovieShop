@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -14,15 +15,16 @@ namespace MovieShop.MVC.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            if (_accountService.Login(email, password))
+            if (await _accountService.LoginAsync(email, password))
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -31,15 +33,16 @@ namespace MovieShop.MVC.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Register(string email, string password)
+        public async Task<IActionResult> Register(string email, string password)
         {
-            if (_userService.RegisterUser(email, password))
+            if (await _userService.RegisterUserAsync(email, password))
             {
                 return RedirectToAction("Login");
             }
@@ -48,9 +51,9 @@ namespace MovieShop.MVC.Controllers
             return View();
         }
 
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            _accountService.Logout();
+            await _accountService.LogoutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

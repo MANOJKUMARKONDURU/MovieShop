@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -12,9 +13,9 @@ namespace MovieShop.MVC.Controllers
             _adminService = adminService;
         }
 
-        public IActionResult GenerateReport()
+        public async Task<IActionResult> GenerateReport()
         {
-            _adminService.GenerateDailyReport();
+            await _adminService.GenerateDailyReportAsync();
             ViewBag.Message = "Report generated successfully.";
             return View();
         }

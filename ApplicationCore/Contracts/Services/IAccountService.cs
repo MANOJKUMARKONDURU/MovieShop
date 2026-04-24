@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace ApplicationCore.Contracts.Services
 {
     public interface IAccountService
     {
-        bool Login(string email, string password);
-        void Logout();
+        Task<bool> LoginAsync(string email, string password);
+        Task LogoutAsync();
     }
 }

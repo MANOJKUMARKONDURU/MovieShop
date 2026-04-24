@@ -1,11 +1,14 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace ApplicationCore.Contracts.Repository
 {
     public interface IRepository<T> where T : class
     {
-        T GetById(int id);
-        IEnumerable<T> GetAll();
-        T Add(T entity);
-        T Update(T entity);
-        void Delete(T entity);
+        Task<T> GetByIdAsync(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> AddAsync(T entity);
+        Task<T> UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
     }
 }

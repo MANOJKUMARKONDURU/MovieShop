@@ -1,7 +1,8 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Entities;
 using Infrastructure.Data;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -11,9 +12,10 @@ namespace Infrastructure.Repository
         {
         }
 
-        public User GetByEmail(string email)
+        public async Task<User?> GetByEmailAsync(string email)
         {
-            return _dbContext.Users.FirstOrDefault(u => u.Email == email);
+            return await _dbContext.Users
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

@@ -1,23 +1,23 @@
+using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
-using Infrastructure.Data;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
     public class GenreService : IGenreService
     {
-        private readonly MovieShopDbContext _dbContext;
+        private readonly IGenreRepository _genreRepository;
 
-        public GenreService(MovieShopDbContext dbContext)
+        public GenreService(IGenreRepository genreRepository)
         {
-            _dbContext = dbContext;
+            _genreRepository = genreRepository;
         }
 
-        public IEnumerable<Genre> GetAllGenres()
+        public async Task<IEnumerable<Genre>> GetAllGenresAsync()
         {
-            return _dbContext.Genres.ToList();
+            return await _genreRepository.GetAllAsync();
         }
     }
 }

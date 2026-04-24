@@ -1,6 +1,7 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -13,9 +14,9 @@ namespace Infrastructure.Services
             _userRepository = userRepository;
         }
 
-        public bool RegisterUser(string email, string password)
+        public async Task<bool> RegisterUserAsync(string email, string password)
         {
-            var existing = _userRepository.GetByEmail(email);
+            var existing = await _userRepository.GetByEmailAsync(email);
             if (existing != null) return false;
 
             var user = new User
@@ -25,7 +26,7 @@ namespace Infrastructure.Services
                 Salt = ""
             };
 
-            _userRepository.Add(user);
+            await _userRepository.AddAsync(user);
             return true;
         }
     }

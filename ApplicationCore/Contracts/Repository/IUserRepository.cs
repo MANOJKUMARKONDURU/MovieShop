@@ -1,9 +1,10 @@
 using ApplicationCore.Entities;
+using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repository
 {
     public interface IUserRepository : IRepository<User>
     {
-        User GetByEmail(string email);
+        Task<User?> GetByEmailAsync(string email);
     }
 }

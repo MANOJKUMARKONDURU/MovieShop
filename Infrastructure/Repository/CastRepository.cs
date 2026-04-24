@@ -2,7 +2,7 @@ using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -12,17 +12,17 @@ namespace Infrastructure.Repository
         {
         }
 
-        public Cast GetCastWithMovies(int id)
+        public async Task<Cast> GetCastWithMoviesAsync(int id)
         {
-            return _dbContext.Casts
+            return await _dbContext.Casts
                 .Include(c => c.MovieCasts)
                 .ThenInclude(mc => mc.Movie)
-                .FirstOrDefault(c => c.Id == id);
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public override Cast GetById(int id)
+        public override async Task<Cast> GetByIdAsync(int id)
         {
-            return GetCastWithMovies(id);
+            return await GetCastWithMoviesAsync(id);
         }
     }
 }

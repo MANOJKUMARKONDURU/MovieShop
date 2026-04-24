@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -12,10 +13,11 @@ namespace Infrastructure.Services
             _reportRepository = reportRepository;
         }
 
-        public void GenerateDailyReport()
+        public async Task GenerateDailyReportAsync()
         {
-            var reports = _reportRepository.GetAll();
-           
+            var reports = await _reportRepository.GetAllAsync();
+
+         
         }
     }
 }

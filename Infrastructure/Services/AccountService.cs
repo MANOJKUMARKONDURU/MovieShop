@@ -1,5 +1,6 @@
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -12,17 +13,18 @@ namespace Infrastructure.Services
             _userRepository = userRepository;
         }
 
-        public bool Login(string email, string password)
+        public async Task<bool> LoginAsync(string email, string password)
         {
-            var user = _userRepository.GetByEmail(email);
+            var user = await _userRepository.GetByEmailAsync(email);
             if (user == null) return false;
 
             return user.HashedPassword == password;
         }
 
-        public void Logout()
+        public Task LogoutAsync()
         {
             // No-op for now
+            return Task.CompletedTask;
         }
     }
 }

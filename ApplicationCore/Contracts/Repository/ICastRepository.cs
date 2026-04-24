@@ -1,10 +1,10 @@
 using ApplicationCore.Entities;
+using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repository
 {
     public interface ICastRepository : IRepository<Cast>
     {
-        // Override GetById to include Movies
-        Cast GetCastWithMovies(int id);
+        Task<Cast> GetCastWithMoviesAsync(int id);
     }
 }
