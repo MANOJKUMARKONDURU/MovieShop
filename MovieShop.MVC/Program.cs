@@ -14,6 +14,22 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MovieShopDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopConnection")));
 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login";
+    });
+
+builder.Services.AddAuthorization();
+
+
+builder.Services.AddHttpContextAccessor();
+
+
+
+
 // Repository DI
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
@@ -43,7 +59,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 // Default Route
 app.MapControllerRoute(

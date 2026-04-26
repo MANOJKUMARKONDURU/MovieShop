@@ -5,10 +5,27 @@ namespace Infrastructure.Data
 {
     public class MovieShopDbContext : DbContext
     {
+        // Parameterless ctor for design-time (EF CLI)
+        public MovieShopDbContext()
+        {
+        }
+
         public MovieShopDbContext(DbContextOptions<MovieShopDbContext> options)
             : base(options)
         {
         }
+
+        // Design-time configuration for EF tools
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+            
+                optionsBuilder.UseSqlServer(
+                    "Server=localhost,1433;Database=MovieShopDb;User ID=sa;Password=Manoj@2127;TrustServerCertificate=True;");
+            }
+        } 
+
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Genre> Genres { get; set; }
@@ -53,10 +70,8 @@ namespace Infrastructure.Data
                 .HasColumnType("decimal(18,2)");
 
             // -------------------------
-            // SEEDING DATA
+            // SEEDING DATA (optional)
             // -------------------------
-
-            
         }
     }
 }

@@ -1,56 +1,65 @@
+using System.Threading.Tasks;
 using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using MovieShop.MVC.Models;
 
 namespace MovieShop.MVC.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountService _accountService;
         private readonly IUserService _userService;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IAccountService accountService, IUserService userService)
+        public AccountController(IUserService userService, IAccountService accountService)
         {
-            _accountService = accountService;
             _userService = userService;
+            _accountService = accountService;
         }
 
         [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
+        public IActionResult Login() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login(LoginRequestModel model)
         {
-            if (await _accountService.LoginAsync(email, password))
+            if (!ModelState.IsValid) return View(model);
+
+            var success = await _accountService.LoginAsync(model.Email, model.Password);
+            if (!success)
             {
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("", "Invalid email or password");
+                return View(model);
             }
 
-            ViewBag.Error = "Invalid login.";
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterRequestModel model)
         {
-            return View();
+            if (!ModelState.IsValid) return View(model);
+
+            var success = await _userService.RegisterUserAsync(
+                model.Email,
+                model.Password,
+                model.FirstName,
+                model.LastName,
+                model.DateOfBirth);
+
+            if (!success)
+            {
+                ModelState.AddModelError("", "Email already exists");
+                return View(model);
+            }
+
+            // After registration, redirect to Login
+            return RedirectToAction("Login");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(string email, string password)
-        {
-            if (await _userService.RegisterUserAsync(email, password))
-            {
-                return RedirectToAction("Login");
-            }
-
-            ViewBag.Error = "User already exists.";
-            return View();
-        }
-
         public async Task<IActionResult> Logout()
         {
             await _accountService.LogoutAsync();

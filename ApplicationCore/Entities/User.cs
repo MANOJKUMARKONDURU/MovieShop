@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,6 +16,14 @@ namespace ApplicationCore.Entities
 
         [MaxLength(1024)]
         public string Salt { get; set; }
+
+        [Required, MaxLength(128)]
+        public string FirstName { get; set; }
+
+        [Required, MaxLength(128)]
+        public string LastName { get; set; }
+
+        public DateTime? DateOfBirth { get; set; }
 
         public ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
         public ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
